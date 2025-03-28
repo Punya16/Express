@@ -1,7 +1,7 @@
 const express = require('express')
 const routes = express.Router()
 
-const { Insert, View, Delete } = require('../Controllers/UserController')
+const { Insert, View, Delete } = require('../Controllers/AgentController')
 
 
 routes.post('/insert', Insert)
