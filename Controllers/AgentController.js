@@ -1,3 +1,5 @@
+// const express = require('express')
+const AgentModel = require('../Models/Agents')
 
 
 const Insert = async (req, res) => {

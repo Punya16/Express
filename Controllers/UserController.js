@@ -1,4 +1,5 @@
-const express = require('express')
+// const express = require('express')
+const UserModel = require('../Models/Users')
 
 
 const Insert = async (req, res) => {
@@ -52,7 +53,7 @@ const View = async (req, res) => {
   try {
     let users = await UserModel.findOne({ name: "Punya" })
     res.json({ success: true, users })
-  } 
+  }
   catch (error) {
     console.log(error)
     res.status(500).json({
@@ -62,7 +63,7 @@ const View = async (req, res) => {
   }
 }
 
-const Delete =  async (req, res) => {
+const Delete = async (req, res) => {
   try {
     let user_id = req.params.id
     let check = await UserModel.findById(user_id)
@@ -77,7 +78,7 @@ const Delete =  async (req, res) => {
       return res.json({ success: false, message: "User Not Found" })
     }
 
-  } 
+  }
   catch (error) {
     console.log(error)
     res.status(500).json({

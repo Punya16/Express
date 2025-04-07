@@ -10,6 +10,7 @@ ConnectToMongoDB()
 // const AgentModel = require('./Models/Agents')
 const UserRoutes = require('./Routes/UserRoutes')
 const AgentRoutes = require('./Routes/AgentRoutes')
+const EmployeeRoutes = require('./Routes/EmployeeRoutes')
 
 const PORT = 5000
 const app = express()
@@ -29,13 +30,16 @@ app.use("/api/user",UserRoutes)
 
 app.use("/api/agent", AgentRoutes)
 
-app.use("/api/user",UserRoutes )
+app.use("/api/employee", EmployeeRoutes)
 
-app.use("/api/agent", AgentRoutes)
 
-app.delete("/api/user",UserRoutes)
+// app.use("/api/user",UserRoutes )
 
-app.use("/api/agent",AgentRoutes )
+// app.use("/api/agent", AgentRoutes)
+
+// app.use("/api/user",UserRoutes)
+
+// app.use("/api/agent",AgentRoutes )
 app.listen(PORT, () => {
   console.log("App listening on PORT : " + PORT)  //should be last line of this file
 })
