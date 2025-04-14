@@ -32,7 +32,7 @@ const Insert = async (req, res) => {
     let saveData = await data.save()  //saves data in mongoDB 
     //or
     //await data.save() 
-
+    //res.send(saveData)
     // res.send(`Name : ${name}, Phone: ${phone}, Email: ${email}, Address: ${address}, Date:${date}`)
 
     res.json({ success: true, data: saveData })
@@ -88,5 +88,21 @@ const Delete = async (req, res) => {
   }
 }
 
+const SingleView = async (req, res) => {
+  const id = req.params.id;
+  const user = await UserModel.findById(id);
 
-module.exports = { Insert, View, Delete }
+  if (!user) {
+    console.log("USER NOT FOUND");
+    res.json({
+      message: "USER NOT FOUND",
+    })
+  } else {
+    res.json({
+      data: user
+    })
+  }
+}
+
+
+module.exports = { Insert, View, Delete, SingleView }

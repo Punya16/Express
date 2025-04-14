@@ -31,7 +31,7 @@ const Insert = async (req, res) => {
     const data = await EmployeeModel({
       emp_id : emp_id,
       name: name,
-      phone: phone,
+      phone: phone,  
       email: email,
       address: address,
       designation: designation,
