@@ -26,7 +26,7 @@ const UserModel = new Schema({
     default:Date.now()
   },
   dob:{
-    type:String,
+    type:Date,
     required:true
   }
 })

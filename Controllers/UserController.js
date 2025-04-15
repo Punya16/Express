@@ -104,5 +104,43 @@ const SingleView = async (req, res) => {
   }
 }
 
+const Update = async (req, res) => {
+  try {
+    const { name, phone, email, address, dob } = req.body;
+    const newData = {}
 
-module.exports = { Insert, View, Delete, SingleView }
+    if (name) {
+      newData.name = name;
+    }
+    if (email) {
+      newData.email = email;
+    }
+    if (phone) {
+      newData.phone = phone;
+    }
+    if (address) {
+      newData.address = address;
+    }
+    if (dob) {
+      newData.dob = dob;
+    }
+
+    let user = await UserModel.findById(req.params.id);
+
+    if (!user) {
+      res.json({
+        message: "USER not Found",
+      })
+    } else {
+      user = await UserModel.findByIdAndUpdate(req.params.id, { $set: newData }, { new: true });
+      res.json(user)
+    }
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json("Some internal error")
+  }
+}
+
+
+module.exports = { Insert, View, Delete, SingleView, Update }
