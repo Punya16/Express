@@ -5,21 +5,21 @@ const { Schema } = mongoose
 const UserModel = new Schema({
   name:{
     type:String,
-    required:true
+    // required:true
   },
   phone:{
     type:Number,
-    required:true,
+    // required:true,
     unique:true
-  },
+  },  
   email:{
     type:String,
-    required:true,
+    // required:true,
     unique:true
   },
   address:{
     type:String,
-    required:false
+    // required:false
   },
   date:{
     type:Date,
@@ -27,7 +27,10 @@ const UserModel = new Schema({
   },
   dob:{
     type:Date,
-    required:true
+    // required:true  
+  },
+  password:{
+    type:String,
   }
 })
 

@@ -14,7 +14,10 @@ const EmployeeRoutes = require('./Routes/EmployeeRoutes')
 
 const PORT = 5000
 const app = express()
+
+const cors = require('cors')
 app.use(express.json())
+app.use(cors())
 
 app.get("/api/testing", (req, res) => {
   console.log("This is testing api")
@@ -34,12 +37,11 @@ app.use("/api/employee", EmployeeRoutes)
 
 
 // app.use("/api/user",UserRoutes )
-
 // app.use("/api/agent", AgentRoutes)
-
 // app.use("/api/user",UserRoutes)
-
 // app.use("/api/agent",AgentRoutes )
+
+
 app.listen(PORT, () => {
   console.log("App listening on PORT : " + PORT)  //should be last line of this file
 })

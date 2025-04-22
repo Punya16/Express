@@ -7,7 +7,7 @@ const Insert = async (req, res) => {
   try {
     console.log(req.body)
 
-    let { name, phone, email, address, dob } = req.body  //second name
+    let { name, phone, email, address, dob, password } = req.body  //second name
 
     let checknum = await UserModel.find({ phone: phone })
 
@@ -28,6 +28,7 @@ const Insert = async (req, res) => {
       email: email,
       address: address,
       dob: dob,
+      password: password
     })
     let saveData = await data.save()  //saves data in mongoDB 
     //or
@@ -132,7 +133,11 @@ const Update = async (req, res) => {
         message: "USER not Found",
       })
     } else {
-      user = await UserModel.findByIdAndUpdate(req.params.id, { $set: newData }, { new: true });
+      user = await UserModel.findByIdAndUpdate(
+        req.params.id,
+        { $set: newData },
+        { new: true }
+      );
       res.json(user)
     }
 
